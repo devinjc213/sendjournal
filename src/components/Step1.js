@@ -9,7 +9,7 @@ class Step1 extends React.Component {
 
     return (
       <div>
-        <label>Type of Climbing</label>
+        <label>Training or Climbing?</label>
         <br />
         <input
           type="radio"

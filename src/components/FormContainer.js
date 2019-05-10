@@ -10,10 +10,7 @@ class Form extends React.Component {
       currentStep: 1,
       sessionType: "",
       inOrOut: "",
-      isBoulderChecked: false,
-      isTopChecked: false,
-      isLeadChecked: false,
-      isTradChecked: false
+      climbingType: []
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -58,13 +55,19 @@ class Form extends React.Component {
 
   get nextButton() {
     let currentStep = this.state.currentStep
+    if(currentStep === 1 && this.state.sessionType.length > 0) {
+      var isEnabled = true
+    } else if (currentStep === 2 && this.state.inOrOut.length > 0) {
+      var isEnabled = true
+    }
 
     if(currentStep < 3){
       return (
         <button
-          className="btn btn-primary float-right"
+          className="btn btn-primary"
           type="button"
-          onClick={this._next}>
+          onClick={this._next}
+          disabled={!isEnabled}>
         Next
         </button>
       )
@@ -104,6 +107,9 @@ class Form extends React.Component {
           currentStep={this.state.currentStep}
           handleChange={this.handleChange}
           inOrOut={this.state.inOrOut}
+        />
+        <Step3
+          currentStep={this.state.currentStep}
         />
 
         {this.previousButton}
