@@ -10,10 +10,14 @@ class Form extends React.Component {
       currentStep: 1,
       sessionType: "",
       inOrOut: "",
-      climbingType: []
+      isBoulderChecked: false,
+      isTopChecked: false,
+      isLeadChecked: false,
+      isTradChecked: false
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
     this._next = this._next.bind(this)
     this._prev = this._prev.bind(this)
   }
@@ -91,10 +95,22 @@ class Form extends React.Component {
     console.log(this.state)
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const {sessionType, inOrOut, isBoulderChecked, isTopChecked, isLeadChecked, isTradChecked} = this.state
+    alert(`State:
+      Session: ${sessionType}
+      inOut: ${inOrOut}
+      isBlouder: ${isBoulderChecked}
+      isTop: ${isTopChecked}
+      isLead: ${isLeadChecked}
+      isTrad: ${isTradChecked}`)
+  }
+
   render(){
     return (
       <React.Fragment>
-      <h1>A Wizard Form</h1>
+      <h1>New Session</h1>
       <p>Step {this.state.currentStep}</p>
 
       <form onSubmit={this.handleSubmit}>
@@ -114,6 +130,8 @@ class Form extends React.Component {
 
         {this.previousButton}
         {this.nextButton}
+
+        <input type="submit" value="Submit"/>
 
       </form>
       </React.Fragment>
