@@ -33,8 +33,11 @@ function Boulder(props) {
           <option value="V16">V16</option>
         </select>
         <br />
-        Date of ascent: 
-        <DatePicker />
+        Date of ascent:
+        <DatePicker
+            selected={props.startDate}
+            onChange={props.handleDateChange}
+        />
       </form>
     </div>
   )

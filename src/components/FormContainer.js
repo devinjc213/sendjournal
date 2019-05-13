@@ -2,6 +2,7 @@ import React from 'react';
 import Step1 from './Step1.js'
 import Step2 from './Step2.js'
 import Step3 from './Step3.js'
+import Boulder from './Boulder.js'
 
 class Form extends React.Component {
   constructor() {
@@ -13,10 +14,12 @@ class Form extends React.Component {
       isBoulderChecked: false,
       isTopChecked: false,
       isLeadChecked: false,
-      isTradChecked: false
+      isTradChecked: false,
+      startDate: new Date()
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.handleDateChange = this.handleDateChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this._next = this._next.bind(this)
     this._prev = this._prev.bind(this)
@@ -59,13 +62,19 @@ class Form extends React.Component {
 
   get nextButton() {
     let currentStep = this.state.currentStep
+    let booleans = [this.state.isBoulderChecked, this.state.isTopChecked,
+                    this.state.isLeadChecked, this.state.isTradChecked]
+    let isEnabled = false
+
     if(currentStep === 1 && this.state.sessionType.length > 0) {
-      var isEnabled = true
+      isEnabled = true
     } else if (currentStep === 2 && this.state.inOrOut.length > 0) {
-      var isEnabled = true
+      isEnabled = true
+    } else if (currentStep === 3 && booleans.some(function (item) {return item === true})) {
+      isEnabled = true
     }
 
-    if(currentStep < 3){
+    if(currentStep < 4){
       return (
         <button
           className="btn btn-primary"
@@ -78,6 +87,12 @@ class Form extends React.Component {
     }
 
     return null;
+  }
+
+  handleDateChange(date){
+    this.setState({
+      startDate: date
+    });
   }
 
   handleChange(e) {
