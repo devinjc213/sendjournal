@@ -9,6 +9,7 @@ function Step3(props) {
   return (
     <div>
       <label>What type of climbing will you be doing?</label>
+      <br />
       <input
         type="checkbox"
         name="isBoulderChecked"
@@ -35,6 +36,7 @@ function Step3(props) {
         name="isTradChecked"
         checked={props.isTradChecked}
         onChange={props.handleChange}
+        disabled={props.inOrOut === "indoor"}
       /> Trad
       <br />
     </div>

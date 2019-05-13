@@ -126,11 +126,17 @@ class Form extends React.Component {
         />
         <Step3
           currentStep={this.state.currentStep}
+          handleChange={this.handleChange}
+          isBoulderChecked={this.state.isBoulderChecked}
+          isTopChecked={this.state.isTopChecked}
+          isLeadChecked={this.state.isLeadChecked}
+          isTradChecked={this.state.isTradChecked}
+          inOrOut={this.state.inOrOut}
         />
 
         {this.previousButton}
         {this.nextButton}
-
+        <br />
         <input type="submit" value="Submit"/>
 
       </form>
