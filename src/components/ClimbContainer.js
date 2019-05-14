@@ -7,7 +7,9 @@ function ClimbContainer(props){
   }
 
   return (
-    
+    <div>
+      what the fuck
+    </div>
   )
 }
 
